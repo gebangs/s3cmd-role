@@ -1,82 +1,37 @@
-```yml
-# Ansible artifacts
+```yaml
+# Ansible-specific ignores
 roles/
-collections/
-.retry
-stdout-callback/
+*.retry
+*.log
+inventory/
+group_vars/
+host_vars/
 
-# General Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-.venv/
-.egg-info/
-.eggs/
-.pytest_cache/
-.mypy_cache/
-.coverage
-coverage.xml
-htmlcov/
-.pyup.yml
-.isort.cfg
-.tox/
-
-# Virtual environments
-.venv/
-venv/
-ENV/
-
-# IDE
-.vscode/
-.idea/
+# General ignores
+*.tmp
 *.swp
 *.swo
-*~
 .DS_Store
 Thumbs.db
 
-# Logs
-*.log
-
-# Environment variables
+# Environment
 .env
 .env.local
 *.env.*
 
-# Build artifacts
-dist/
-build/
-target/
-node_modules/
-.npm/
-.yarn/
-bower_components/
+# Logs
+*.log
 
-# Compressed files
-*.zip
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
+# Backup and swap files
+*~
+*.bak
+*.backup
+
+# OS generated files
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 ```

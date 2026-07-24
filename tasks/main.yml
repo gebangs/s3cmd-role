@@ -1,5 +1,13 @@
 ---
 # tasks file for s3cmd-role
+- name: Validate required credentials are provided
+  fail:
+    msg: "Required variable '{{ item }}' is not set. Please provide AWS credentials securely (e.g., via Ansible Vault)."
+  when: vars[item] is not defined or vars[item] == ""
+  loop:
+    - s3cmd_access_key
+    - s3cmd_secret_key
+
 - name: Install pip support dependencies
   apt:
     name:
@@ -38,7 +46,7 @@
     dest: /usr/local/bin/s3cmd
     owner: root
     group: "{{ s3cmd_authorized_group }}"
-    mode: 0770
+    mode: 0750
 
 - name: Create target directory for configuration file
   file:
@@ -46,12 +54,12 @@
     state: directory
     owner: root
     group: "{{ s3cmd_authorized_group }}"
-    mode: 0755
+    mode: 0750
 
-- name: Install configuration file
+- name: Install configuration file with secure permissions
   template:
     dest: "/etc/s3cmd/.s3cfg"
-    mode: 0640
+    mode: 0600
     owner: root
-    group: "{{ s3cmd_authorized_group }}"
+    group: root
     src: "s3cfg.j2"
